@@ -4,7 +4,7 @@ window.SITE_CONFIG = {
   whatsapp: "201223921717",
   phone: "01223921717",
   // حط لينك الحساب كامل، ولو سيبته فاضي الزرار مش هيظهر
-  instagram: "",
+  instagram: "https://www.instagram.com/cap__mohamed_0",
   facebook: "",
   tiktok: ""
 };
