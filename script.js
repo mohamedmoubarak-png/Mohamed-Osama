@@ -6,6 +6,7 @@
   document.querySelectorAll("[data-link]").forEach(function (a) {
     var key = a.getAttribute("data-link");
     var url = key === "whatsapp" ? waBase : key === "phone" ? (cfg.phone && "tel:" + cfg.phone) : cfg[key];
+    if (key === "whatsapp" && url && a.dataset.waText) url += "?text=" + encodeURIComponent(a.dataset.waText);
     if (url) a.href = url; else a.remove();
   });
 
