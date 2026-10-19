@@ -41,5 +41,18 @@
     window.open(waBase + "?text=" + encodeURIComponent(text), "_blank");
   });
 
+  // zoom images in as they scroll into view
+  var zoomEls = document.querySelectorAll(".zoom-in");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    zoomEls.forEach(function (el) { io.observe(el); });
+  } else {
+    zoomEls.forEach(function (el) { el.classList.add("visible"); });
+  }
+
   document.getElementById("year").textContent = new Date().getFullYear();
 })();

@@ -88,6 +88,23 @@ a { color: inherit; text-decoration: none; }
 .hero { position: relative; overflow: hidden; }
 .hero::after { content: ""; position: absolute; inset: auto 0 0; height: 120px; background: linear-gradient(transparent, var(--bg)); pointer-events: none; }
 
+.hero-visual img {
+  transform-origin: 50% 85%;
+  animation: hero-in 1.6s cubic-bezier(.16,1,.3,1) both, hero-breathe 9s ease-in-out 1.6s infinite alternate;
+}
+.hero-visual::before { animation: glow-in 2s ease-out both; }
+@keyframes hero-in { from { opacity: 0; transform: scale(.88) translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes hero-breathe { from { transform: scale(1); } to { transform: scale(1.05); } }
+@keyframes glow-in { from { opacity: 0; transform: scale(.7); } to { opacity: 1; transform: none; } }
+
+/* zoom-in on scroll */
+.zoom-in { opacity: 0; transform: scale(.9); transition: opacity 1.2s ease, transform 1.6s cubic-bezier(.16,1,.3,1); }
+.zoom-in.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual img, .hero-visual::before { animation: none; }
+  .zoom-in { opacity: 1; transform: none; transition: none; }
+}
+
 /* about */
 .about-wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: center; }
 .about-img { position: relative; }
@@ -124,9 +141,9 @@ a { color: inherit; text-decoration: none; }
 
 /* gallery */
 .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
-.gallery img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(.9); transition: transform .3s, filter .3s; border-radius: var(--radius); border: 1px solid var(--line); }
+.gallery img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(.9); transition: opacity 1.2s ease, transform 1.6s cubic-bezier(.16,1,.3,1), filter .4s; border-radius: var(--radius); border: 1px solid var(--line); }
 
-.gallery img:hover { transform: scale(1.02); filter: saturate(1.1); }
+.gallery img:hover { transform: scale(1.04); filter: saturate(1.1); }
 
 /* plans */
 .plans { margin-top: 0; align-items: stretch; }
