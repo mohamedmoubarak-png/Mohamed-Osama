@@ -11,3 +11,9 @@
 
 ## النشر مجاناً على GitHub Pages
 Settings → Pages → Source: *Deploy from a branch* → اختار الفرع والمجلد `/ (root)` → Save.
+
+## قبل كل نشر
+شغّل الأمر ده عشان الزوار يشوفوا التحديث على طول من غير ما يمسحوا الكاش:
+```
+python3 tools/bump_versions.py
+```
